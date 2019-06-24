@@ -1,7 +1,6 @@
 # Javascript APDU Parser
 
 # Usage
-## NodeJS
 
 ## Web Browser
 ```
@@ -24,7 +23,7 @@ var parsedAPDU = parseAPDU("90 00", function(parsedAPDU){
 None.
 
 ## Head Nod
-Python APDU Parser
+Python APDU Parser -- https://github.com/eIDuy/apdu-parser
 
 ## Todo
  - [ ] Test Coverage & Documentation -_-
