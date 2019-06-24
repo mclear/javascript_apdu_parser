@@ -2152,7 +2152,21 @@ function parseAPDU(apdu, callback){
 	var parsed = {}; // Object we will store parsed data in
 	parsed.apdu = apdu; // Store the original APDU request so we can respond with it too
 
+  if(apdu.indexOf(" ") <= 0){
+    // APDU has no spaces, introduce spaces every 2 chars.
+    apdu = chunk(apdu, 2).join(' ');
+  }
+
+
+  if(apdu[0] === "0" && apdu[1] === "x"){
+    // Prefixed 0x as per scriptgen, remove the 0x
+    apdu = apdu.split("0x").join("");
+  }
+
+  parsed.sanitizedAPDU = apdu;
+
 	var bytes = apdu.split(" "); // Split the APDU command up by spaces
+
 
 	var cla = bytes[0];
 	var ins = bytes[1];
@@ -2219,8 +2233,23 @@ function parseAPDU(apdu, callback){
 	})
 
 }
-  if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
-    module.exports = parseAPDU;
-	}else{
-		window.parseAPDU = parseAPDU;
-	}
+
+
+function chunk(str, n) {
+  var ret = [];
+  var i;
+  var len;
+
+  for(i = 0, len = str.length; i < len; i += n) {
+     ret.push(str.substr(i, n))
+  }
+
+  return ret
+};
+
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
+  module.exports = parseAPDU;
+}else{
+	window.parseAPDU = parseAPDU;
+}
