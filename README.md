@@ -26,4 +26,7 @@ None.
 Python APDU Parser -- https://github.com/eIDuy/apdu-parser
 
 ## Todo
- - [ ] Test Coverage & Documentation -_-
+ - [ ] Test Coverage & Documentation
+
+## License
+Apache 2
