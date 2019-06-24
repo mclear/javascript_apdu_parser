@@ -26,7 +26,10 @@ None.
 Python APDU Parser -- https://github.com/eIDuy/apdu-parser
 
 ## Todo
- - [ ] Test Coverage & Documentation
+ - [ ] Use async/await/promises not callbacks
+ - [ ] Use hipster(correct) JS declarations IE let instead of var
+ - [ ] Try understand how the whole le change thing works
+ - [ ] Test Coverage
 
 ## License
 Apache 2

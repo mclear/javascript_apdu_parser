@@ -2147,17 +2147,12 @@ var commands = [
 	}
 ]
 
-
-// test = "61 15"
-
-// parseAPDU(apdu);
-
 function parseAPDU(apdu, callback){
 	var lc, le, data;
-	var parsed = {};
-	parsed.apdu = apdu;
+	var parsed = {}; // Object we will store parsed data in
+	parsed.apdu = apdu; // Store the original APDU request so we can respond with it too
 
-	var bytes = apdu.split(" "); // Split the APDU command up
+	var bytes = apdu.split(" "); // Split the APDU command up by spaces
 
 	var cla = bytes[0];
 	var ins = bytes[1];
@@ -2168,7 +2163,6 @@ function parseAPDU(apdu, callback){
 		p1 = ins;
     ins = cla;
 	}
-
 
 	// If the length is 5 then the length is the 5th byte
 	if(apdu.length === 5){
@@ -2182,7 +2176,7 @@ function parseAPDU(apdu, callback){
 		// var lc_int = "0x" + lc; // how it was originally... ?
 
 		if(apdu.length > 5 + lc){
-			le = bytes[5+lc] // to test
+			le = bytes[5+lc] // Needs test coverage..
 
 			data = bytes.splice(5, bytes.length -8); // Remove items we don't want.. in this instance first 4 bytes and last 8..
 			data = data.join(" "); // Flatten Data down to string including spaces between each byte
