@@ -1,9 +1,9 @@
 ((responses) => {
-    if (typeof exports !== 'undefined') {
-        module.exports = responses;
-    } else {
+    if ('window' in globalThis) {
         window.parseAPDU = window.parseAPDU || {};
         window.parseAPDU.responses = responses;
+    } else {
+        module.exports = responses;
     }
 })([
     {

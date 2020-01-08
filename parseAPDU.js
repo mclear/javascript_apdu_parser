@@ -101,8 +101,9 @@ function chunk(str, n) {
 
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined'){
-  module.exports = parseAPDU;
+  module.exports = parseAPDU.bind(null, commands, responses);
 }else{
 	window.parseAPDU = parseAPDU.bind(null, commands, responses);
 }
-})(window.parseAPDU);
+})('window' in globalThis ? window.parseAPDU : {commands: require('./commands'), responses: require('./responsens')});
+

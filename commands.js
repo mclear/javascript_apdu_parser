@@ -1,9 +1,9 @@
 ((commands) => {
-    if (typeof exports !== 'undefined') {
-        module.exports = commands;
-    } else {
+    if ('window' in globalThis) {
         window.parseAPDU = window.parseAPDU || {};
         window.parseAPDU.commands = commands;
+    } else {
+        module.exports = commands;
     }
 })([
     {
